@@ -1,0 +1,7 @@
+# clone repo to HOME folder as linux_env and run setup
+ln -s linux_env .vim
+ln -s linux_env/bashrc .bashrc
+ln -s linux_env/tmux.conf .tmux.conf
+ln -s linux_env/vimrc .vimrc
+
+

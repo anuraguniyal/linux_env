@@ -1,0 +1,3 @@
+set -x
+search="command=.*$@"
+tac ~/.custom_history |grep -E "$search" |cut -c17-|more

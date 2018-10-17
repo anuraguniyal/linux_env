@@ -1,3 +1,16 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # bashrc will be sourced, so hardcoding path of file
 src="$HOME/linux_env/.bashrc"
 DIR=$(dirname $src)

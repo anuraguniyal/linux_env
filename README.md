@@ -1,11 +1,10 @@
 git repo to store my vim and bash scripts and other settings
 
-clone repo to HOME folder and symlink .vimrc and .bashrc
+clone repo to HOME folder and run
 ```
 $ cd
-$ ln -s linux_env/.bashrc .
-$ ln -s linux_env/.vimrc .
-$ ln -s linux_env .vim
+$ linux_env/setup
 ```
 
 `linux_env/bin` contains some common commands and is in path, for local bin `~/bin` is in path, so you can symlink various binaries there.
+.bashrc loads .local_bashrc so you could put any local specific/private changes there.

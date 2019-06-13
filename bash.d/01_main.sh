@@ -25,15 +25,17 @@ export PS1="\n\[\033[00m\]\$(date +%b-%d\ %H:%M:%S) \u@$(hostname -s)\[\033[01;3
 export HISTTIMEFORMAT='%F %T %t'
 export P4CONFIG='.p4config'
 export P4EDITOR='vim'
+# setup global npm folder
+export NPM_CONFIG_PREFIX=~/.npm-global
+export ANDROID_SDK=$HOME/Android/Sdk/
+export ANDROID_HOME=$HOME/Android/Sdk/
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export PATH=$PATH:$HOME/bin:$HOME/linux_env/bin:$HOME/.rvm/bin
+    export PATH=$PATH:$HOME/bin:$HOME/linux_env/bin:$HOME/.rvm/bin:~/.npm-global/bin
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias mvi='open -a MacVim.app'
 fi
-
-export PATH="$HOME/bin:$HOME/.vim/bin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 save_custom_history(){
     CUSTOM_HISTORY_FILE=~/.custom_history

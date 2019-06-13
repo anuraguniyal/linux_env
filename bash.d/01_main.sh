@@ -45,7 +45,7 @@ save_custom_history(){
 
 PROMPT_COMMAND=save_custom_history
 
-# attach to main tmux
+# attach to main tmux or create main session
 if [ -x "$(command -v tmux)" ]; then
-    tmux attach -t main
+    tmux attach -t main || tmux new -s main
 fi

@@ -1,0 +1,20 @@
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vi
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1152x994+65+24
+	history-view-vpane-position = 719
+	main-window-view = HistoryView
+	file-view-vpane-position = 610
+[alias]
+   st = status
+   ci = commit
+   br = branch
+   co = checkout
+   df = diff
+   lg = log -p
+   lol = log --graph --decorate --pretty=oneline --abbrev-commit
+   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+   ls = ls-files
+   cs = changeset

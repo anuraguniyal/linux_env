@@ -43,6 +43,7 @@ save_custom_history(){
     echo "1.hostname=$(hostname)" >> $CUSTOM_HISTORY_FILE
     echo "2.whoami=$(who am i)" >> $CUSTOM_HISTORY_FILE
     echo "3.logname=$LOGNAME" >> $CUSTOM_HISTORY_FILE
+    echo "4.pwd=$(pwd)" >> $CUSTOM_HISTORY_FILE
 }
 
 PROMPT_COMMAND=save_custom_history

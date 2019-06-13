@@ -1,3 +1,41 @@
-set -x
+#set -x
+
+cleanup ()
+{
+exit 0
+}
+trap cleanup INT
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+green=$(tput setaf 2)
+
 search="command=.*$@"
-tac ~/.custom_history |grep -E "$search" |cut -c17-|more
+matches=0
+found=0
+tac ~/.custom_history | \
+{ while read line; do
+    #read option </dev/tty
+    if [[ $line =~ $search ]] ; then
+        matches=$((matches+1))
+        found=1
+        echo "${green}${bold}${line:17}${normal}"
+        continue
+    fi
+    # if we found a matching line print more details about it
+    if [[ $found = "1" ]] ; then
+        # echo pwd for the command
+        if [[ ${line:0:5}  = "4.pwd" ]] ; then
+            echo "    ${line:2}"
+        fi
+        if [[ ${line:0:10} = "1.hostname" ]] ; then
+            echo "    ${line:2}"
+        fi
+        # if we reached next command reset found
+        if [[ ${line:0:10} = "0.command=" ]] ; then
+            found=0
+        fi
+    fi
+done
+} | more
+#tac ~/.custom_history |grep -B 5 -E "$search" |more

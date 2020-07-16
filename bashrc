@@ -22,3 +22,6 @@ done
 if [ -e $HOME/.local_bashrc ]; then
     source $HOME/.local_bashrc
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/dbc/software/rvm/bin"

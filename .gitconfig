@@ -18,3 +18,4 @@
    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
    ls = ls-files
    cs = changeset
+   hist = log --pretty=format:\"%h %Cgreen%cd%Creset | %s%d %Cblue[%an]%Creset\" --graph --decorate --date=short

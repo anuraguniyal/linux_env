@@ -6,6 +6,7 @@ syntax on
 autocmd BufWritePre * :%s/\s\+$//e
 set list listchars=tab:╰━,trail:┉,extends:>
 highlight SpecialKey ctermfg=red guifg=red
+highlight Search ctermbg=yellow ctermfg=black
 "set cul
 set guifont=Monaco:h13
 set number

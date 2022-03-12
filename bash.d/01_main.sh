@@ -17,7 +17,7 @@ fi
 
 # add git branch to path
 parse_git_branch() {
- git rev-parse --abbrev-ref HEAD
+ echo `git rev-parse --abbrev-ref HEAD 2> /dev/null`
 }
 
 export PS1="\n\[\033[00m\]\$(date +%b-%d\ %H:%M:%S) \u@$(hostname -s)\[\033[01;33m\] \w \[\033[31m\]\$(parse_git_branch)\n\[\033[00m\]$\[\033[00m\] "

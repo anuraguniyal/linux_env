@@ -12,7 +12,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # bashrc will be sourced, so hardcoding path of file
-src="$HOME/linux_env/.bashrc"
+src="$HOME/linux_env/bashrc"
 DIR=$(dirname $src)
 for f in $DIR/bash.d/*.sh; do
     source $f

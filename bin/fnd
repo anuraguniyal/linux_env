@@ -1,0 +1,31 @@
+#!/usr/bin/env python2
+
+import sys
+import os
+
+def run_find(grep_str=None, file_wild_card=None, show_lines=5):
+    cmd = "LC_ALL=C  "
+    if file_wild_card:
+        cmd += 'find . -name "%s"'%file_wild_card
+    else:
+        cmd += 'find . \( -name "*.py" -o -name "*.rb" -o -name "*.json" -o -name "*.sh" -o -name "*.yaml" \)'
+
+    if grep_str:
+        if show_lines:
+            neighbor_flag = " -A %s -B %s"%(show_lines, show_lines)
+        show_colors = "export GREP_OPTIONS='--color=auto'"
+        grep_cmd = 'xargs -0 grep -n -i %s "%s"'%(neighbor_flag, grep_str)
+        cmd = "%s ; %s  -print0 | %s"%(show_colors, cmd, grep_cmd)
+
+    print "running",cmd
+    os.system(cmd)
+
+if __name__ == "__main__":
+    grep_str = file_wild_card = None
+    try:
+        grep_str = sys.argv[1]
+        file_wild_card = sys.argv[2]
+    except IndexError:
+        pass
+
+    run_find(grep_str, file_wild_card)

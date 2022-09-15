@@ -3,6 +3,18 @@
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# needed on mac
+export CLICOLOR=1
+export t_bold=$(tput bold)
+export t_normal=$(tput sgr0)
+export t_red=$(tput setaf 1)
+export t_green=$(tput setaf 2)
+export t_yellow=$(tput setaf 3)
+export t_blue=$(tput setaf 4)
+export t_magenta=$(tput setaf 5)
+export t_cyan=$(tput setaf 6)
+export t_white=$(tput setaf 7)
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -20,7 +32,7 @@ parse_git_branch() {
  echo `git rev-parse --abbrev-ref HEAD 2> /dev/null`
 }
 
-export PS1="\n\[\033[00m\]\$(date +%b-%d\ %H:%M:%S) \u@$(hostname -s)\[\033[01;33m\] \w \[\033[31m\]\$(parse_git_branch)\n\[\033[00m\]$\[\033[00m\] "
+export PS1="$(date +%b-%d\ %H:%M:%S) \u@$(hostname -s) ${t_yellow} \w ${t_red} $(parse_git_branch) ${t_normal}\n$ "
 
 export HISTTIMEFORMAT='%F %T %t'
 export P4CONFIG='.p4config'
@@ -29,9 +41,9 @@ export P4EDITOR='vim'
 export NPM_CONFIG_PREFIX=~/.npm-global
 export ANDROID_SDK=$HOME/Android/Sdk/
 export ANDROID_HOME=$HOME/Android/Sdk/
-
+export PATH=$PATH:$HOME/bin:$HOME/linux_env/bin
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export PATH=$PATH:$HOME/bin:$HOME/linux_env/bin:$HOME/.rvm/bin:~/.npm-global/bin
+    export PATH=$HOME/.rvm/bin:~/.npm-global/bin
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias mvi='open -a MacVim.app'

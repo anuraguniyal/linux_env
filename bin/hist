@@ -9,17 +9,16 @@ trap cleanup INT
 bold=$(tput bold)
 normal=$(tput sgr0)
 green=$(tput setaf 2)
-
 search="command=.*$@"
 matches=0
 found=0
-tac ~/.custom_history | \
+tail -r ~/.custom_history | \
 { while read line; do
     #read option </dev/tty
     if [[ $line =~ $search ]] ; then
         matches=$((matches+1))
         found=1
-        echo "${green}${bold}${line:17}${normal}"
+        echo ${green}${bold}"${line:17}"${normal}
         continue
     fi
     # if we found a matching line print more details about it
@@ -37,5 +36,5 @@ tac ~/.custom_history | \
         fi
     fi
 done
-} | more
+} | less -r
 #tac ~/.custom_history |grep -B 5 -E "$search" |more

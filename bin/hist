@@ -15,7 +15,7 @@ found=0
 rcat="tac"
 if ! command -v tac &> /dev/null
 then
-  rcat = "tail -r"
+  rcat="tail -r"
 fi
 rcat=$rcat" ~/.custom_history"
 eval "$rcat" | \

@@ -32,7 +32,7 @@ parse_git_branch() {
  echo `git rev-parse --abbrev-ref HEAD 2> /dev/null`
 }
 
-export PS1="$(date +%b-%d\ %H:%M:%S) \u@$(hostname -s) ${t_yellow} \w ${t_red} $(parse_git_branch) ${t_normal}\n$ "
+export PS1='$(date +%b-%d\ %H:%M:%S) \u@$(hostname -s) ${t_yellow} \w ${t_red} $(parse_git_branch) ${t_normal}\n$ '
 
 export HISTTIMEFORMAT='%F %T %t'
 export P4CONFIG='.p4config'
@@ -43,7 +43,7 @@ export ANDROID_SDK=$HOME/Android/Sdk/
 export ANDROID_HOME=$HOME/Android/Sdk/
 export PATH=$PATH:$HOME/bin:$HOME/linux_env/bin
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export PATH=$HOME/.rvm/bin:~/.npm-global/bin
+    export PATH=$PATH:$HOME/.rvm/bin:~/.npm-global/bin
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     alias mvi='open -a MacVim.app'

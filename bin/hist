@@ -12,7 +12,13 @@ green=$(tput setaf 2)
 search="command=.*$@"
 matches=0
 found=0
-tail -r ~/.custom_history | \
+rcat="tac"
+if ! command -v tac &> /dev/null
+then
+  rcat = "tail -r"
+fi
+rcat=$rcat" ~/.custom_history"
+eval "$rcat" | \
 { while read line; do
     #read option </dev/tty
     if [[ $line =~ $search ]] ; then
@@ -36,5 +42,5 @@ tail -r ~/.custom_history | \
         fi
     fi
 done
-} | less -r
+} | less -rXF
 #tac ~/.custom_history |grep -B 5 -E "$search" |more

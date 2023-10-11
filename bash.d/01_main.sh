@@ -41,7 +41,7 @@ export P4EDITOR='vim'
 export NPM_CONFIG_PREFIX=~/.npm-global
 export ANDROID_SDK=$HOME/Android/Sdk/
 export ANDROID_HOME=$HOME/Android/Sdk/
-export PATH=$PATH:$HOME/bin:$HOME/linux_env/bin
+export PATH=$HOME/bin:$HOME/linux_env/bin:$PATH
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     export PATH=$PATH:$HOME/.rvm/bin:~/.npm-global/bin
 

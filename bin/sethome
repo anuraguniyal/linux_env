@@ -1,0 +1,10 @@
+# this script will set correct HOME
+# cd to it
+# source ./bashrc
+# assume that this script is under expected $HOME/linux_env/bin/sethome
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+export HOME=$(dirname $(dirname "$SCRIPT_DIR"))
+cd $HOME
+source $HOME/.bashrc
+exec $SHELL

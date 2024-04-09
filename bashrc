@@ -4,16 +4,18 @@ case $- in
       *) return;;
 esac
 
+# bashrc will be sourced, so hardcoding path of file
+src="$HOME/linux_env/bashrc"
+DIR=$(dirname $src)
+
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
+# first source linux_env aliases
+. $DIR/bash_aliases
+# then source local aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# bashrc will be sourced, so hardcoding path of file
-src="$HOME/linux_env/bashrc"
-DIR=$(dirname $src)
 for f in $DIR/bash.d/*.sh; do
     source $f
 done
@@ -47,3 +49,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
